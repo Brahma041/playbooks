@@ -1,0 +1,28 @@
+
+---
+- name: ecomm website
+  hosts: w2
+  become: yes
+
+  tasks:
+    - name: Git installation
+      command:
+        yum -y install git
+
+    - name: httpd installation
+      command:
+        yum -y install httpd
+
+    - name: Ensure service started
+      command:
+        systemctl enable httpd
+
+    - name: Ensure service enabled
+      command:
+        systemctl start httpd
+
+    - name: Cloning from Git
+      command:
+        git clone https://github.com/ravi2krishna/ecomm.git /var/www/html
+...
+

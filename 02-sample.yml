@@ -1,0 +1,33 @@
+
+---
+- name: ecomm website
+  hosts: w1
+  become: yes
+
+  tasks:
+    - name: Git installation
+      package:
+        name: git
+        state: present
+
+    - name: httpd installation
+      package:
+        name: httpd
+        state: present
+
+    - name: Ensure service started
+      service:
+        name: httpd
+        state: started
+
+    - name: Ensure service enabled
+      service:
+        name: httpd
+        enabled: yes
+
+    - name: Cloning from Git
+      git:
+        repo: https://github.com/ravi2krishna/ecomm.git
+        dest: /var/www/html
+...
+

@@ -1,0 +1,23 @@
+
+---
+- name: ecomm website
+  hosts: all
+  become: yes
+
+  tasks:
+    - name: ensure selinux as permissive
+      selinux:
+        policy: targeted
+        state: permissive
+
+    - name: Changing the configuration file
+      copy:
+        dest: /etc/httpd/conf/httpd.conf
+        src: httpd.conf
+
+    - name: Restarting the httpd
+      service:
+        name: httpd
+        state: restarted
+...
+

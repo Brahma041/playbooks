@@ -1,0 +1,10 @@
+
+---
+- name: Installing
+  hosts: s2
+  become: yes
+
+  roles:
+   - web-role
+...
+

@@ -1,0 +1,11 @@
+
+---
+- name: Creating new directory
+  hosts: w2
+
+  tasks:
+    - name: ensure new directory is created
+      command:
+             touch file1
+...
+

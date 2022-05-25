@@ -1,0 +1,19 @@
+
+---
+- name: Installing the Packages
+  hosts: s2
+  become: yes
+
+  tasks:
+    - name: ensure respective app is Installed
+      package:
+         name: "{{ item }}"
+         state: absent
+      loop:
+       - git
+       - wget
+       - tree
+       - httpd
+       - java-1.8*
+...
+
